@@ -33,8 +33,8 @@
             <tbody>
             @each(post in posts)
             <tr>
-              <td> {{ post.title }} </td>
-              <td> {{ post.content }} </td>
+              <td> {{ post.judul}} </td>
+              <td> {{ post.isi }} </td>
               <td class="text-center">
                 <a href="{{ route('posts.edit', { id : post.id }) }}" class="btn btn-sm btn-primary">EDIT</a>
                 <a href="{{ route('posts.delete', { id : post.id }) }}" class="btn btn-sm btn-danger">HAPUS</a>
