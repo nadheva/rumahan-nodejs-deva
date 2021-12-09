@@ -27,6 +27,25 @@ class PostController {
       return response.route('posts.index')    
     }
 
+    async edit({ request, response, view, params}) {
+        const id = params.id
+        const post = await Post.find(id)
+
+        return view.render('posts.edit', {post: post})
+    }
+
+    async update({ request, response, view, params, session}) {
+        const  id = params.id
+        const post = await Post.find(id)
+        
+
+        post.judul = request.input('judul')
+        post.isi = request.input('isi')
+        await post.save()
+
+        session.flash({notification: 'Data berhasil diupdate!'})
+        return response.route('posts.index')
+    }
 }
 
 module.exports = PostController
